@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en" class="tw-dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All your AI models in one place - Try Pixa Playground</title>
+    <meta name="description" content="Get all your AI models and tools in one place" />
+    <link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="All your AI models in one place - Try Pixa Playground" />
+    <meta property="og:description" content="Get all your AI models and tools in one place" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/PaulleDemon" />
+    <meta property="og:image" content="" />
+
+    <!-- <link rel="stylesheet" href="css/tailwind-runtime.css" /> -->
+    <link rel="stylesheet" href="css/tailwind-build.css">
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-');
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            const swipers = document.querySelectorAll(".swiper-container");
+            swipers.forEach(container => {
+                new Swiper(container, {
+                    loop: true,
+                    autoplay: { delay: 2000 },
+                    slidesPerView: 1,
+                });
+            });
+
+            const swapImages = document.querySelectorAll("[data-swap-images]");
+            swapImages.forEach(img => {
+                const images = img.dataset.swapImages.split(",");
+                let index = 0;
+                setInterval(() => {
+                    index = (index + 1) % images.length;
+                    img.src = images[index].trim();
+                }, 2000);
+            });
+        });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-[#fcfcfc] 
+            tw-text-black dark:tw-bg-black  dark:tw-text-white">
+    <!-- <div class="tw-absolute tw-top-0 tw-left-1/2 tw--translate-x-1/2 tw-flex 
+                    tw-h-[100px] tw-w-full tw-max-w-[80%]">
+            <div class="header-gradient tw-h-full tw-w-full "></div>
+        </div> -->
+
+    <header class="lg:tw-px-4 tw-max-w-[100vw] tw-max-w-lg:tw-mr-auto max-lg:tw-top-0 tw-fixed tw-top-4 lg:tw-left-1/2 lg:tw--translate-x-1/2 tw-z-20 tw-flex tw-h-[60px] tw-w-full 
+                    tw-text-gray-700 tw-bg-white dark:tw-text-gray-200 dark:tw-bg-[#17181b] tw-px-[3%] tw-rounded-md lg:tw-max-w-5xl tw-shadow-md dark:tw-shadow-gray-700
+                    lg:tw-justify-around lg:!tw-backdrop-blur-lg lg:tw-opacity-[0.99]">
+        <a class="tw-flex tw-p-[4px] tw-gap-2 tw-place-items-center" href="#">
+
+
+            <div class="tw-h-[70px] tw-max-w-[100px]">
+                <img src="./assets/logo/logo.png" alt="logo"
+                    class="tw-object-contain tw-h-full tw-w-full dark:tw-invert" />
+
+            </div>
+            <span class="tw-uppercase tw-text-base tw-font-medium"></span>
+            <button type="button" onclick="toggleMode()" class="header-links tw-text-gray-600 dark:tw-text-gray-300"
+                title="toggle-theme" id="theme-toggle">
+                <i class="bi bi-sun" id="toggle-mode-icon">modo</i>
+            </button>
+            <img style="height: 15px;"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Flag_of_Mozambique.svg/800px-Flag_of_Mozambique.svg.png"
+                alt="">
+        </a>
+        <div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
+            <nav class="tw-relative tw-flex tw-h-full max-lg:tw-h-max tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col 
+                                max-lg:tw-gap-5 lg:tw-mx-auto tw-place-items-center">
+
+                <a class="header-links" href="#pricing"> Preços </a>
+                <div
+                    class="tw-flex tw-place-items-center tw-gap-[20px] tw-text-xl max-md:tw-w-full max-md:tw-place-content-center max-md:!tw-text-white">
+                    <a href="https://www.instagram.com/" target="_blank" rel="no-referrer" area-label="instagram"
+                        class="header-links tw-transition-colors tw-duration-[0.3s]">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/" target="_blank" rel="no-referrer" area-label="tiktok"
+                        class="header-links tw-transition-colors tw-duration-[0.3s]">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="no-referrer" area-label="youtube"
+                        class="header-links tw-transition-colors tw-duration-[0.3s]">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+                <div class="tw-relative tw-flex tw-flex-col tw-place-items-center">
+                    <div id="nav-dropdown-toggle-0"
+                        class="max-lg:tw-max-w-fit tw-flex header-links tw-gap-1  tw-place-items-center">
+                        <span class=""> Presentes </span>
+                        <i class="tw-text-sm bi bi-chevron-down"></i>
+                    </div>
+                    <nav id="nav-dropdown-list-0" data-open="false" class="tw-scale-0 tw-opacity-0  lg:tw-fixed tw-flex lg:tw-top-[80px] lg:tw-left-1/2 lg:tw--translate-x-1/2 
+                                    tw-w-[90%] tw-rounded-lg max-lg:tw-h-0 max-lg:tw-w-0
+                                    lg:tw-h-[450px] tw-overflow-hidden
+                                     tw-bg-white dark:tw-bg-[#17181B] tw-duration-300 
+                                     tw-transition-opacity tw-transition-height tw-shadow-lg tw-p-4">
+                        <div
+                            class="tw-grid max-xl:tw-flex max-xl:tw-flex-col tw-justify-around tw-grid-cols-2 tw-w-full">
+                            <a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#">
+                                <div class="tw-font-semibold tw-text-3xl">
+                                    <i class="bi bi-flower3"></i>
+                                </div>
+                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                    <div class="tw-text-lg tw-text-black dark:tw-text-white tw-font-medium">Buquês</div>
+
+                                </div>
+                            </a>
+
+                            <a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#">
+                                <div class="tw-font-semibold tw-text-3xl">
+                                    <i class="bi bi-balloon-heart"></i>
+                                </div>
+                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                    <div class="tw-text-lg tw-text-black dark:tw-text-white tw-font-medium">Balões</div>
+
+                                </div>
+                            </a>
+
+                            <a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#">
+                                <div class="tw-font-semibold tw-text-3xl">
+                                    <i class="bi bi-cookie"></i>
+                                </div>
+                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                    <div class="tw-text-lg tw-text-black dark:tw-text-white tw-font-medium">Bombons
+                                    </div>
+
+                                </div>
+                            </a>
+
+                            <a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#">
+                                <div class="tw-font-semibold tw-text-3xl">
+                                    <i class="bi bi-person-arms-up"></i>
+                                </div>
+                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                    <div class="tw-text-lg tw-text-black dark:tw-text-white tw-font-medium">
+                                        Ursinhos
+                                    </div>
+
+                                </div>
+                            </a>
+
+                            <a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#">
+                                <div class="tw-font-semibold tw-text-3xl">
+                                    <i class="bi bi-cash-coin"></i>
+                                </div>
+                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                    <div class="tw-text-lg tw-text-black dark:tw-text-white tw-font-medium">
+                                        Buquês de Dinheiro
+                                    </div>
+
+                                </div>
+                            </a>
+
+                            <a class="header-links tw-flex tw-text-left tw-gap-4 !tw-p-4" href="#">
+                                <div class="tw-font-semibold tw-text-3xl">
+                                    <i class="bi bi-file-person"></i>
+                                </div>
+                                <div class="tw-flex tw-flex-col tw-gap-2">
+                                    <div class="tw-text-lg tw-text-black dark:tw-text-white tw-font-medium">
+                                        Quadros
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+
+
+            </nav>
+            <div class="lg:tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full 
+                            max-md:tw-flex-col max-md:tw-place-content-center">
+                <button type="button" onclick="toggleMode()" class="header-links tw-text-gray-600 dark:tw-text-gray-300"
+                    title="toggle-theme" id="theme-toggle">
+                    <i class="bi bi-sun" id="toggle-mode-icon"></i>
+                </button>
+                <a href="/pedido.html" aria-label="Try Pixa Playground" class="btn tw-flex tw-gap-3 tw-px-3 tw-py-2 tw-transition-transform 
+                                    tw-duration-[0.3s] hover:tw-translate-x-2">
+                    <span>Pedir Presente à Alguém</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-gray-500 lg:tw-hidden"
+            onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
+    </header>
+
+    <section
+        class="hero-section tw-relative tw-mt-20 tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-lg:tw-mt-[100px]"
+        id="hero-section">
+
+        <!-- video container -->
+        <div class="tw-fixed tw-bg-[#000000af] dark:tw-bg-[#80808085] tw-top-0 tw-left-1/2 tw--translate-x-1/2 tw-z-20 tw-transition-opacity
+                tw-duration-300 tw-scale-0 tw-opacity-0 tw-p-2
+                tw-w-full tw-h-full tw-flex tw-place-content-center tw-place-items-center" id="video-container-bg">
+
+            <div class="tw-max-w-[80vw] max-lg:tw-max-w-full max-lg:tw-w-full tw-scale-0 tw-transition-transform tw-duration-500 tw-p-6 tw-rounded-xl  max-lg:tw-px-2 tw-w-full tw-gap-2 tw-shadow-md 
+                            tw-h-[90vh] max-lg:tw-h-auto max-lg:tw-min-h-[400px] tw-bg-white dark:tw-bg-[#16171A] tw-max-h-full
+                            " id="video-container">
+                <div class="tw-w-full tw-flex">
+                    <button type="button" onclick="closeVideo()" class="tw-ml-auto tw-text-xl" title="close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </button>
+                </div>
+                <div
+                    class="tw-flex tw-w-full  tw-rounded-xl tw-px-[5%] max-md:tw-px-2 tw-min-h-[300px] tw-max-h-[90%] tw-h-full">
+
+                    <div class="tw-relative tw-bg-black tw-min-w-full tw-min-h-full tw-overflow-clip tw-rounded-md">
+                        <!-- add your youtube video link here -->
+                        <iframe
+                            class="tw-absolute tw-top-[50%] tw--translate-y-[50%] tw-left-[50%] tw--translate-x-[50%] tw-w-full tw-h-full"
+                            src="https://www.youtube.com/embed/6j4fPVkA3EA?si=llcTrXPRM-MRXDZB&amp;controls=0&rel=0&showinfo=0&autoplay=1&loop=1&mute=1"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="hero-bg-gradient tw-relative tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4">
+
+            <div
+                class="purple-bg-grad  reveal-up tw-absolute tw-left-1/2 tw--translate-1/2 tw-top-[10%] tw-h-[120px] tw-w-[120px]">
+            </div>
+
+            <div class="tw-flex tw-flex-col tw-min-h-[60vh] tw-place-content-center tw-items-center">
+                <h2
+                    class="reveal-up tw-text-center tw-text-7xl tw-font-semibold tw-uppercase tw-leading-[90px] max-lg:tw-text-4xl max-md:tw-leading-snug">
+                    <span class="">buquê perfeito</span>
+                    <img style="max-width: 6;" class="" src="assets/images/home/2.png" alt="">
+                    <span class="tw-font-thin tw-font-serif">  para cada ocasião </span>
+                </h2>
+                <div class="reveal-up tw-mt-8 tw-max-w-[450px] tw-text-lg max-lg:tw-text-base tw-p-2 tw-text-center
+                         tw-text-gray-800 dark:tw-text-white max-lg:tw-max-w-full">
+                         Encante com flores! Escolha entre nossos buquês exclusivos e torne cada momento ainda mais especial.
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+    <section
+        class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-8">
+        <div class="reveal-up tw-mt-10 max-md:tw-flex-col tw-flex tw-place-items-center tw-gap-4">
+
+            <button onclick="openVideo()" class="btn !tw-w-[170px] max-lg:!tw-w-[160px] !tw-rounded-xl !tw-py-4 max-lg:!tw-py-2 tw-flex tw-gap-2 tw-group !tw-bg-transparent !tw-text-black dark:!tw-text-white tw-transition-colors 
+                                tw-duration-[0.3s] tw-border-[1px] tw-border-black dark:tw-border-white">
+
+
+
+                <span>Comprar Buquê</span>
+                <i class="bi bi-cart group-hover:tw-translate-x-1 tw-duration-300"></i>
+            </button>
+            <a class="btn tw-group max-lg:!tw-w-[160px] tw-flex tw-gap-2 tw-shadow-lg !tw-w-[170px] !tw-rounded-xl !tw-py-4 max-lg:!tw-py-2 tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
+                href="#">
+                <span>Surpreender Alguém</span>
+                <i class="bi bi-arrow-right group-hover:tw-translate-x-1 tw-duration-300"></i>
+            </a>
+
+        </div>
+        <br><br>
+        <h2 class="reveal-up tw-text-3xl max-md:tw-text-xl">
+            Envio Para
+        </h2>
+
+        <div class="reveal-up carousel-container">
+            <div class="carousel lg:w-place-content-center tw-mt-10 tw-flex tw-w-full tw-gap-5 max-md:tw-gap-2">
+                <!-- add the brands using your app  -->
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Maputo</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Gaza</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Inhambane</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Manica</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Sofala</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Zambézia</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Nampula</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Tete</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Niassa</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+                <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                    <p
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0">
+                        Cabo Delgado</p>
+                    <img src="./assets/images/brand-logos/google.svg" alt="Google"
+                        class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                        srcset="" />
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section
+        class="tw-relative tw-mt-10 tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-items-center lg:tw-p-6">
+
+        <div class="reveal-up tw-mt-[5%] tw-flex tw-h-full tw-w-full tw-place-content-center 
+                        tw-gap-2 tw-p-4 max-lg:tw-max-w-full max-lg:tw-flex-col">
+
+            <div class="tw-relative tw-flex tw-max-w-[30%] max-lg:tw-max-w-full tw-flex-col 
+                            tw-place-items-start tw-gap-4  tw-p-2 max-lg:tw-place-items-center 
+                            max-lg:tw-place-content-center max-lg:tw-w-full">
+                <div
+                    class="tw-top-40 tw-flex tw-flex-col lg:tw-sticky tw-place-items-center tw-max-h-fit tw-max-w-[850px] max-lg:tw-max-h-fit max-lg:tw-max-w-[320px] tw-overflow-hidden">
+                    <h2 class="tw-text-5xl tw-font-serif tw-text-center tw-font-medium  max-md:tw-text-3xl">
+                        <img src="assets/images/home/1.png" alt="">
+                    </h2>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="tw-flex tw-flex-col tw-gap-10 tw-h-full tw-max-w-1/2 max-lg:tw-max-w-full tw-px-[10%]
+                             max-lg:tw-px-4 max-lg:tw-gap-3 max-lg:tw-w-full lg:tw-top-[20%]
+                             tw-place-items-center
+                             ">
+                <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                    <a href="#" class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl 
+                                    hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all
+                                  tw-p-8 tw-group/card">
+                        <div class="tw-text-4xl max-md:tw-text-2xl">
+                            <i class="bi bi-ui-checks"></i>
+                        </div>
+
+                        <div class="tw-flex tw-flex-col tw-gap-4">
+                            <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                Preencher formulário de envio
+                            </h3>
+                            <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                Insira os detalhes da transação e do destinatário para iniciar o processo de pagamento.
+                            </p>
+
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                    <a href="#"
+                        class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl
+                                 hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all tw-p-8 tw-group/card">
+                        <div class="tw-text-4xl max-md:tw-text-2xl">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+
+                        <div class="tw-flex tw-flex-col tw-gap-4">
+                            <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                Efetuar pagamento
+                            </h3>
+                            <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                Escolha seu método de pagamento preferido e confirme a transação de forma segura.
+                           
+                            </p>
+
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                    <a href="#" class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl hover:tw-shadow-lg tw-duration-300 
+                                tw-transition-all dark:tw-shadow-[#171717] tw-p-8 tw-group/card">
+                        <div class="tw-text-4xl max-md:tw-text-2xl">
+                            <i class="bi bi-chat"></i>
+                        </div>
+
+                        <div class="tw-flex tw-flex-col tw-gap-4">
+                            <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                [Opcional] Falar com o suporte
+                            </h3>
+                            <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                Precisa de ajuda? Nossa equipe de suporte está pronta para esclarecer suas dúvidas.
+                            </p>
+
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                    <a href="#" class="tw-flex tw-w-full dark:tw-shadow-[#171717] tw-h-full tw-gap-8 tw-rounded-xl  hover:tw-shadow-lg tw-duration-300 
+                            tw-transition-all tw-p-8 tw-group/card">
+                        <div class="tw-text-4xl max-md:tw-text-2xl">
+                            <i class="bi bi-box2-heart"></i>
+                        </div>
+
+                        <div class="tw-flex tw-flex-col tw-gap-4">
+                            <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                Confirmar recebimento
+                            </h3>
+                            <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                Assim que o pagamento for processado, você receberá uma confirmação do sucesso da transação.
+                            </p>
+
+
+                        </div>
+                    </a>
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="tw-mt-5 tw-flex tw-w-full tw-flex-col tw-gap-6 tw-place-items-center tw-p-[2%]" id="pricing">
+        <h3 class="reveal-up tw-text-5xl tw-font-medium max-md:tw-text-2xl">
+            Personalizados
+        </h3>
+        <!-- pricing -->
+        <div class="tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col">
+            <div
+                class="reveal-up tw-flex tw-w-[350px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-border-[1px]
+                            tw-border-outlineColor tw-bg-white dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-8 tw-shadow-xl max-lg:tw-w-[320px]">
+                <h3 class="">
+                    <span class="tw-text-5xl max-md:tw-text-3xl tw-font-semibold">MZN 1499</span>
+
+                </h3>
+                <p class="tw-mt-3 tw-text-center tw-text-gray-800 dark:tw-text-gray-100">
+                    Aleatório e Surpresa
+                </p>
+                <hr />
+                <ul class="tw-mt-4 tw-flex tw-flex-col tw-gap-4 tw-text-base tw-text-gray-800 dark:tw-text-gray-200">
+                    <li class="tw-flex tw-gap-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>chance de ganhar kit completo, kit de namorados ou apenas um presente</span>
+                    </li>
+
+
+
+
+                </ul>
+                <a href="#" class="btn tw-mt-auto !tw-w-full tw-transition-transform tw-duration-[0.3s] 
+                                hover:tw-scale-x-[1.02] !tw-text-black !tw-bg-transparent !tw-border-[1px]
+                                 tw-border-black dark:tw-border-white dark:!tw-text-white">
+                    Comprar
+                </a>
+            </div>
+
+            <div
+                class="reveal-up tw-flex tw-w-[350px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-border-2
+                            tw-border-outlineColor tw-bg-white dark:tw-bg-[#080808] dark:tw-border-[#595858] tw-p-8 tw-shadow-xl max-lg:tw-w-[320px]">
+                <h3 class="">
+                    <span class="tw-text-5xl max-md:tw-text-3xl  tw-font-semibold">MZN 4999</span>
+
+                </h3>
+                <p class="tw-mt-3 tw-text-center tw-text-gray-800 dark:tw-text-gray-200">
+                    Kit Completo
+                </p>
+                <hr />
+                <ul class="tw-mt-4 tw-flex tw-flex-col tw-gap-4  tw-text-base tw-text-gray-800 dark:tw-text-gray-100">
+                    <li class="tw-flex tw-gap-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>1 Buquê</span>
+                    </li>
+                    <li class="tw-flex tw-gap-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>1 Ursinho de Plush</span>
+                    </li>
+                    <li class="tw-flex tw-gap-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>1 Retrato</span>
+                    </li>
+
+                    <li class="tw-flex tw-gap-2 ">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>1 caixa de Bombons</span>
+                    </li>
+
+                    <li class="tw-flex tw-gap-2 ">
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>2 Balões</span>
+                    </li>
+
+                </ul>
+                <a href="#"
+                    class="btn tw-mt-auto !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                    Comprar
+                </a>
+            </div>
+
+            <div
+                class="reveal-up tw-flex tw-w-[350px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-border-[1px]
+                            tw-border-outlineColor dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-bg-white tw-p-8 tw-shadow-xl max-lg:tw-w-[320px]">
+                <h3 class="">
+                    <span class="tw-text-5xl max-md:tw-text-3xl tw-font-semibold">MZN 2399</span>
+                   
+                </h3>
+                <p class="tw-mt-3 tw-text-center tw-text-gray-800 dark:tw-text-gray-100">
+                    Kit de Namorados
+                </p>
+                <hr />
+                <ul class="tw-mt-4 tw-flex tw-flex-col tw-gap-4 tw-text-base 
+                                tw-text-gray-800 dark:tw-text-gray-200">
+                    <li class="tw-flex tw-gap-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>1 Buquê</span>
+                    </li>
+                    <li class="tw-flex tw-gap-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>1 Caixa de Bonbons</span>
+                    </li>
+                    <li class="tw-flex tw-gap-2 ">
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>1 Balões</span>
+                    </li>
+
+
+                    <i class="bi bi-check-circle-fill tw-text-gray-400 dark:tw-text-gray-500"></i>
+
+
+                </ul>
+                <a href="#" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] 
+                                hover:tw-scale-x-[1.02] !tw-text-black !tw-bg-transparent 
+                                !tw-border-[1px] tw-border-black dark:tw-border-white dark:!tw-text-white">
+                    Comprar
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section
+        class="tw-mt-5 tw-flex tw-min-h-[80vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%] max-lg:tw-p-3">
+        <h3 class="reveal-up tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+            Outros
+        </h3>
+
+
+        <div class="reveal-up tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-10 max-lg:tw-flex-col">
+
+            <!-- Produto 1 - Buquê -->
+            <a href="#"
+                class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+                <div class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="./assets/images/imagens/6.png" alt="Buquê"
+                                class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                        <div class="swiper-slide"><img src="./assets/images/imagens/5.png" alt="Buquê"
+                                class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                    </div>
+                </div>
+                <div class="tw-text-gray-800 dark:tw-text-gray-200">MZN 999,00</div>
+                <h3 class="tw-mt-1 tw-font-medium tw-text-xl">Buquê</h3>
+            </a>
+
+            <!-- Produto 2 - Ursinho de Plush -->
+            <a href="#"
+                class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+                <div class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="./assets/images/imagens/3.png" alt="Buquê"
+                                class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                        <div class="swiper-slide"><img src="./assets/images/imagens/4.png" alt="Buquê"
+                                class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                    </div>
+                </div>
+                <div class="tw-text-gray-800 dark:tw-text-gray-200">MZN 999,00</div>
+                <h3 class="tw-mt-1 tw-font-medium tw-text-xl">Ursinho de Plush</h3>
+            </a>
+            <!-- Produto 3 - Arranjo de Balões -->
+            <a href="#"
+                class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+                <div class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="./assets/images/imagens/2.png" alt="Buquê"
+                                class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                        <div class="swiper-slide"><img src="./assets/images/imagens/1.png" alt="Buquê"
+                                class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                    </div>
+                </div>
+                <div class="tw-text-gray-800 dark:tw-text-gray-200">MZN 699,00</div>
+                <h3 class="tw-mt-1 tw-font-medium tw-text-xl">Arranjo de Balões</h3>
+
+
+                <!-- Produto 4 - Caixa de Bombons -->
+                <a href="#"
+                    class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+                    <div
+                        class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./assets/images/imagens/7.png" alt="Buquê"
+                                    class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                            <div class="swiper-slide"><img src="./assets/images/imagens/8.png" alt="Buquê"
+                                    class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                        </div>
+                    </div>
+                    <div class="tw-text-gray-800 dark:tw-text-gray-200">MZN 699,00</div>
+                    <h3 class="tw-mt-1 tw-font-medium tw-text-xl">Caixa de Bombons</h3>
+                </a>
+
+                <!-- Produto 5 - Quadro -->
+                <a href="#"
+                    class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+                    <div
+                        class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./assets/images/imagens/9.png" alt="Buquê"
+                                    class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                            <div class="swiper-slide"><img src="./assets/images/imagens/10.png" alt="Buquê"
+                                    class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                        </div>
+                    </div>
+                    <div class="tw-text-gray-800 dark:tw-text-gray-200">MZN 899,00</div>
+                    <h3 class="tw-mt-1 tw-font-medium tw-text-xl">Quadro</h3>
+                </a>
+
+
+
+                <!-- Produto 6 - Buquê de Dinheiro -->
+                <a href="#"
+                    class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+                    <div
+                        class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./assets/images/imagens/11.png" alt="Buquê"
+                                    class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                            <div class="swiper-slide"><img src="./assets/images/imagens/11.png" alt="Buquê"
+                                    class="tw-h-full tw-w-full tw-object-cover tw-rounded-2xl" /></div>
+                        </div>
+                    </div>
+                    <div class="tw-text-gray-800 dark:tw-text-gray-200">Personalizável</div>
+                    <h3 class="tw-mt-1 tw-font-medium tw-text-xl">Buquê de Dinheiro</h3>
+                </a>
+
+
+
+        </div>
+    </section>
+    <section
+        class="tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%]">
+        <h3 class="reveal-up tw-text-4xl tw-font-medium tw-text-center max-md:tw-text-2xl">
+            Comentários
+        </h3>
+        <!-- Testimonials -->
+        <div class="tw-mt-20 tw-gap-10 tw-space-y-8  max-md:tw-columns-1 lg:tw-columns-2 xl:tw-columns-3">
+
+
+            <div class="reveal-up tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                    tw-flex-col tw-gap-4 tw-rounded-lg tw-border-[1px] 
+                    tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-4 max-lg:tw-w-[320px]">
+
+                <div class="tw-flex tw-place-items-center tw-gap-3">
+                    <div class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full">
+                        <img src="./assets/images/people/1.jpg" class="tw-h-full tw-w-full tw-object-cover"
+                            alt="women" />
+                    </div>
+                    <div class="tw-flex tw-flex-col tw-gap-1">
+                        <div class="tw-font-semibold">Marcia</div>
+                        <div class="tw-text-gray-700 dark:tw-text-gray-300">Maputo</div>
+                        <p>⭐ Avaliação: ★★★★☆ (4/5)</p>
+                    </div>
+                </div>
+
+                <p class="tw-mt-4 tw-text-gray-800 dark:tw-text-gray-200">
+                    Esse ursinho de plush é muito fofo e macio, um presente maravilhoso.
+                </p>
+            </div>
+
+
+
+            <div class="reveal-up tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                    tw-flex-col tw-gap-4 tw-rounded-lg tw-border-[1px] 
+                    tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-4 max-lg:tw-w-[320px]">
+
+                <div class="tw-flex tw-place-items-center tw-gap-3">
+                    <div class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full">
+                        <img src="./assets/images/people/2.jpg" class="tw-h-full tw-w-full tw-object-cover" alt="man" />
+                    </div>
+                    <div class="tw-flex tw-flex-col tw-gap-1">
+                        <div class="tw-font-semibold">Arcanjo</div>
+                        <div class="tw-text-gray-700 dark:tw-text-gray-300">Manica</div>
+                        <p>⭐ Avaliação: ★★★★☆ (4.8/5)</p>
+                    </div>
+                </div>
+
+                <p class="tw-mt-4 tw-text-gray-800 dark:tw-text-gray-200">
+                    Minha esposa amou os chocolates! Só achei que poderia ter mais opções de sabores
+                </p>
+            </div>
+
+            <div class="reveal-up tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                    tw-flex-col tw-gap-4 tw-rounded-lg tw-border-[1px] 
+                    tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-4 max-lg:tw-w-[320px]">
+
+                <div class="tw-flex tw-place-items-center tw-gap-3">
+                    <div class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full">
+                        <img src="./assets/images/people/3.jpg" class="tw-h-full tw-w-full tw-object-cover"
+                            alt="women" />
+                    </div>
+                    <div class="tw-flex tw-flex-col tw-gap-1">
+                        <div class="tw-font-semibold">Nyra</div>
+                        <div class="tw-text-gray-700 dark:tw-text-gray-300">Maputo</div>
+                        <p>⭐ Avaliação: ★★★★★ (5/5)</p>
+                    </div>
+                </div>
+
+                <p class="tw-mt-4 tw-text-gray-800 dark:tw-text-gray-200">
+                    As flores chegaram frescas e bem organizadas. Com certeza, comprarei novamente!
+                </p>
+            </div>
+
+
+        </div>
+    </section>
+    <section
+        class="tw-relative tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%]">
+
+
+        <h3 class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+            Faq
+        </h3>
+        <div class="tw-mt-5 tw-flex tw-min-h-[300px] tw-w-full tw-max-w-[850px] tw-flex-col tw-gap-4">
+            <div class="faq tw-w-full">
+                <h4 class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+                    <span>Quanto tempo para receber?</span>
+                    <i class="bi bi-plus tw-text-xl tw-origin-center tw-duration-300 tw-transition-transform 
+                                    tw-ml-auto tw-font-semibold"></i>
+                </h4>
+                <div class="content max-lg:tw-text-sm">
+                    1 dia para zona sul e até 3 dias, para zona centro e norte </div>
+            </div>
+            <hr>
+            <div class="faq tw-w-full">
+                <h4 class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+                    <span>Como chega às outras provincias?</span>
+                    <i class="bi bi-plus tw-text-xl tw-origin-center tw-duration-300 tw-transition-transform 
+                                    tw-ml-auto tw-font-semibold"></i>
+                </h4>
+                <div class="content max-lg:tw-text-sm">
+                    Por tranporte terreste, custos adicionais de para envio aéreo
+                </div>
+            </div>
+            <hr>
+            <div class="faq tw-w-full">
+                <h4 class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+                    <span>Em caso de danos?</span>
+                    <i class="bi bi-plus tw-text-xl tw-origin-center tw-duration-300 tw-transition-transform 
+                                    tw-ml-auto tw-font-semibold"></i>
+                </h4>
+                <div class="content max-lg:tw-text-sm">
+                    Reembolso proporcional aos danos.
+                </div>
+            </div>
+            <hr>
+
+            <div class="faq tw-w-full">
+                <h4 class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+                    <span>Localização?</span>
+                    <i class="bi bi-plus tw-text-xl tw-origin-center tw-duration-300 tw-transition-transform 
+                                    tw-ml-auto tw-font-semibold"></i>
+                </h4>
+                <div class="content max-lg:tw-text-sm">
+                    Maputo, Matola, Mozambique - 1114
+                </div>
+            </div>
+            <hr>
+
+        </div>
+        <div class="purple-bg-grad max-md:tw-hidden reveal-up tw-absolute tw-bottom-14 tw-right-[20%] 
+                                 tw-h-[150px] tw-w-[150px] tw-rounded-full"></div>
+
+    </section>
+
+
+
+
+    <footer class="tw-mt-auto tw-w-full tw-text-sm tw-pt-6 tw-pb-10 tw-px-[10%] tw-text-black dark:tw-text-white">
+        <div class="tw-flex tw-flex-wrap tw-justify-between tw-gap-6 max-md:tw-flex-col">
+
+           
+
+            <!-- Links Úteis -->
+            <div class="tw-flex tw-flex-wrap tw-justify-around tw-gap-6 tw-w-full max-md:tw-flex-col">
+                 <!-- Logo e Redes Sociais -->
+            <div class="tw-flex tw-flex-col tw-items-center tw-gap-6 tw-w-[250px] max-md:tw-w-full">
+                <a href="#" class="tw-flex tw-flex-col tw-items-center tw-gap-4">
+                    <img src="./assets/logo/logo.png" alt="Logo" class="tw-max-w-[120px] dark:tw-invert" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Flag_of_Mozambique.svg/800px-Flag_of_Mozambique.svg.png"
+                        alt="Bandeira de Moçambique" class="tw-max-w-[120px]" />
+                </a>
+                <div class="tw-flex tw-gap-4 tw-text-lg">
+                    <a href="https://github.com/voidabinerjr/" aria-label="Github">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://twitter.com/abinermaleianejr" aria-label="Twitter">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/abinermaleianejr" aria-label="Linkedin">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+                <div class="tw-w-[200px]">
+                    <h2 class="tw-text-xl tw-font-semibold">Recursos</h2>
+                    <nav class="tw-flex tw-flex-col tw-gap-3">
+                        <a href="#" class="footer-link">Comece agora</a>
+                        <a href="#" class="footer-link">Documentação da API</a>
+                        <a href="#" class="footer-link">Endpoints da API</a>
+                        <a href="#" class="footer-link">Status do sistema</a>
+                        <a href="#" class="footer-link">Planos e Preços</a>
+                    </nav>
+                </div>
+
+                <div class="tw-w-[200px]">
+                    <h2 class="tw-text-xl tw-font-semibold">Empresa</h2>
+                    <nav class="tw-flex tw-flex-col tw-gap-3">
+                        <a href="#" class="footer-link">Canais de suporte</a>
+                        <a href="#" class="footer-link">Sistemas</a>
+                        <a href="#" class="footer-link">Blog</a>
+                        <a href="https://twitter.com/abinermaleianejr" class="footer-link">Twitter</a>
+                        <a href="https://github.com/voidabinerjr" class="footer-link">GitHub</a>
+                    </nav>
+                </div>
+
+                <div class="tw-w-[200px]">
+                    <h2 class="tw-text-xl tw-font-semibold">Legal</h2>
+                    <nav class="tw-flex tw-flex-col tw-gap-3">
+                        <a href="#" class="footer-link">Termos de serviço</a>
+                        <a href="#" class="footer-link">Política de privacidade</a>
+                        <a href="#" class="footer-link">Remoção de conteúdo (DCMA)</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <hr class="tw-mt-8">
+        <div class="tw-mt-2 tw-text-gray-700 dark:tw-text-gray-300 tw-text-center tw-text-[12px]">
+            <span>Copyright &#169; 2023-2025</span>
+            <span>Todos os direitos reservados. Marcas registradas pertencem aos seus respectivos donos.</span>
+        </div>
+    </footer>
+
+    <!-- Swiper.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
+    integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
+    integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"
+    integrity="sha512-hIlMpy2enepx9maXZF1gn0hsvPLerXoLHdb095CmRY5HG3bZfN7XPBZ14g+TUDH1aGgfLyPHmY9/zuU53smuMw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="./scripts/components.js"></script>
+<script src="./index.js"></script>
+
+<!-- By Paul: https://github.com/PaulleDemon -->
+
+</html>
