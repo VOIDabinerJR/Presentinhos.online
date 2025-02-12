@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .product-details {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 350px;
+        }
+        .product-details img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-details">
+        <img id="product-image" src="" alt="Produto">
+        <h2 id="product-name"></h2>
+        <p id="product-price" style="color: gray;"></p>
+        <button onclick="comprar()">Comprar</button>
+    </div>
+
+    <script>
+        // Pega os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+        const nome = params.get("nome");
+        const preco = params.get("preco");
+        const imagem = params.get("imagem");
+
+        // Define os valores nos elementos da página
+        document.getElementById("product-name").textContent = nome;
+        document.getElementById("product-price").textContent = preco;
+        document.getElementById("product-image").src = imagem;
+
+        function comprar() {
+            alert("Produto comprado: " + nome);
+        }
+    </script>
+
+</body>
+</html>

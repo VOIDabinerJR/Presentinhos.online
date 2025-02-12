@@ -645,8 +645,8 @@
         <div class="reveal-up tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-10 max-lg:tw-flex-col">
 
             <!-- Produto 1 - Buquê -->
-            <a href="#"
-                class="tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
+            <a href=""  onclick="openModal()"
+                class="product-card tw-flex tw-h-[500px] tw-w-[400px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[350px]">
                 <div class="swiper-container tw-h-[350px] tw-min-h-[350px] tw-w-full tw-overflow-hidden tw-rounded-2xl">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="./assets/images/imagens/6.png" alt="Buquê"
@@ -949,6 +949,35 @@
 
     <!-- Swiper.js JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
+
+    <!-- Modal (Janela Pop-up) -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img src="./assets/images/imagens/6.png" alt="Buquê">
+            <h2>Buquê</h2>
+            <p style="color: gray;">MZN 999,00</p>
+            <button onclick="comprar()">Comprar</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function comprar() {
+            alert("Produto adicionado ao carrinho!");
+        }
+    </script>
+    
 
 </body>
 
