@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .product-details {
             background-color: #222;
             padding: 20px;
@@ -23,10 +25,12 @@
             text-align: center;
             width: 350px;
         }
+
         .product-details img {
             width: 100%;
             border-radius: 10px;
         }
+
         button {
             width: 100%;
             padding: 10px;
@@ -38,19 +42,37 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #ddd;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="product-details">
-        <img id="product-image" src="" alt="Produto">
-        <h2 id="product-name"></h2>
-        <p id="product-price" style="color: gray;"></p>
+    <div class="product-details product-item">
+        <img id="product-image" class="image-item" src="" alt="Produto">
+        <h2 id="product-name" class="name-item"></h2>
+        <div style="display: none;" class="quantity-item">2</div>
+        <div style="display: none;" class="id-item">005</div>
+        <p>MZN <i id="product-price" class="price-item" style="color: gray;"></i></p>
         <button onclick="comprar()">Comprar</button>
+        
+    <div id="void-button-container" buttonToken="VOID-04fce89f-0952-4736-8c35-c93c0e503809"></div>
+    <p id="error-message"></p>
     </div>
+
+
+
+
+
+    <script src="http://localhost:3000/sdk/js?clientId=49db28ad-8ce0-4370-aefd-3f8636b6081b">  </script>
+
+
+
+
+
 
     <script>
         // Pega os parâmetros da URL
@@ -70,4 +92,5 @@
     </script>
 
 </body>
+
 </html>
